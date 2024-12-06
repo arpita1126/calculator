@@ -1,12 +1,41 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
+  selector: 'app-calculator',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'calci';
+
+export class appComponent 
+{
+  displayValue:string="";
+
+  head:string="cal";
+  
+
+  onButtonClick(value:string)
+  {
+    this.displayValue=this.displayValue+value;
+  }
+
+  onButtonClickClr()
+  {
+    this.displayValue="";
+  }
+
+  onButtonClickAns()
+  {
+     let result:string="";
+     try
+     {
+        result=eval(this.displayValue);
+        this.displayValue=result;
+     }
+     catch(error)
+     {
+      this.displayValue="invalidinput";
+     }
+
+  }
+
 }
